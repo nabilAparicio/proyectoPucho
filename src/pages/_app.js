@@ -1,11 +1,38 @@
 import "@material-tailwind/react/tailwind.css";
 import '../styles/globals.css';
-import {AuthProvider} from "../../hooks"
+import {
+    AuthProvider, 
+    UserIdDataProvider, 
+    UserEmailDataProvider,
+    UserEmailVerifiedDataProvider,
+    UserNameDataProvider,
+    UserCurrentTeamIdProvider,
+    UserProfilePhotoPathProvider,
+    UserCreateAtProvider,
+    UserUpdateAtProvider,
+} from "../../hooks"
 function MyApp({ Component, pageProps }) {
     return (
         <AuthProvider>
-            <Component {...pageProps} />
+            <UserIdDataProvider>
+                <UserEmailDataProvider>
+                    <UserEmailVerifiedDataProvider>
+                        <UserNameDataProvider>
+                            <UserCurrentTeamIdProvider>
+                                <UserProfilePhotoPathProvider>
+                                    <UserCreateAtProvider>
+                                        <UserUpdateAtProvider>                                           
+                                             <Component {...pageProps} />
+                                        </UserUpdateAtProvider>
+                                    </UserCreateAtProvider>
+                                </UserProfilePhotoPathProvider>
+                            </UserCurrentTeamIdProvider>
+                        </UserNameDataProvider>
+                    </UserEmailVerifiedDataProvider>
+                </UserEmailDataProvider>
+            </UserIdDataProvider>
         </AuthProvider>
+
     )
 }
 
