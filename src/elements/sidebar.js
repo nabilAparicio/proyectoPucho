@@ -26,7 +26,7 @@ function Sidebar() {
                 </div>
                 <hr className="my-4 min-w-full" />
                 <ul className=" font-bold block ">
-                    <li className= "flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg  transition  ease-in-out delay-150 border-2 border-slate-100 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 whitespace-nowrap grow-0 py-4 ">
+                    <li className= "flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg  transition  ease-in-out delay-150 border-2 border-slate-200 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 whitespace-nowrap grow-0 py-4 ">
                         <div className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
                             <HiTemplate/>
                         </div>
@@ -36,7 +36,7 @@ function Sidebar() {
                             </a>
                         </Link>
                     </li>
-                    <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-100 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4" >
+                    <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-200 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4" >
                         <div className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
                             <HiUserGroup/>
                         </div>
@@ -46,7 +46,7 @@ function Sidebar() {
                             </a>
                         </Link>
                     </li>
-                    <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-100 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4">
+                    <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-200 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4">
                         <div className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
                             <HiFolderOpen/>
                         </div>
@@ -56,7 +56,7 @@ function Sidebar() {
                             </a>
                         </Link>
                     </li>
-                    <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-100 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4">
+                    <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-200 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4">
                         <div className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
                             <HiCode/>
                         </div>
