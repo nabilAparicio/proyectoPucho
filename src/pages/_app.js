@@ -2,35 +2,17 @@ import "@material-tailwind/react/tailwind.css";
 import '../styles/globals.css';
 import {
     AuthProvider, 
-    UserIdDataProvider, 
-    UserEmailDataProvider,
-    UserEmailVerifiedDataProvider,
-    UserNameDataProvider,
-    UserCurrentTeamIdProvider,
-    UserProfilePhotoPathProvider,
-    UserCreateAtProvider,
-    UserUpdateAtProvider,
 } from "../../hooks"
+import AppContext from "../context/AppContext";
+import useInitialState from "../../hooks/useInitialState";
+
 function MyApp({ Component, pageProps }) {
+    const initialState = useInitialState()
     return (
         <AuthProvider>
-            <UserIdDataProvider>
-                <UserEmailDataProvider>
-                    <UserEmailVerifiedDataProvider>
-                        <UserNameDataProvider>
-                            <UserCurrentTeamIdProvider>
-                                <UserProfilePhotoPathProvider>
-                                    <UserCreateAtProvider>
-                                        <UserUpdateAtProvider>                                           
-                                             <Component {...pageProps} />
-                                        </UserUpdateAtProvider>
-                                    </UserCreateAtProvider>
-                                </UserProfilePhotoPathProvider>
-                            </UserCurrentTeamIdProvider>
-                        </UserNameDataProvider>
-                    </UserEmailVerifiedDataProvider>
-                </UserEmailDataProvider>
-            </UserIdDataProvider>
+            <AppContext.Provider value={initialState}>                                    
+                <Component {...pageProps} />                           
+            </AppContext.Provider>
         </AuthProvider>
 
     )

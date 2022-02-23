@@ -20,5 +20,10 @@ export const login = async (email, password) => (
 );
 export const getUser = async (token) => (
     await instance.get('/user', {headers: { Authorization: `Bearer ${token}` }})
-
+    .then((res) => {
+        return res.data
+    })
+    .catch((e) => {
+        return e.response
+    })
 );

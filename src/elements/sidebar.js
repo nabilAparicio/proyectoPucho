@@ -1,13 +1,21 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { HiMenu, HiTemplate, HiUserGroup, HiFolderOpen, HiCode } from "react-icons/hi";
-import { useNameData, useSidebarToggle } from "../../hooks";
+import AppContext from "../context/AppContext";
 
 function Sidebar() {
+    
+    const {clientsToggleButton} = useContext(AppContext);
+    const [clientsToggle, setClientsToggle] = useState(false)
+
     const [toggle, settoggle] = useState(true);
     const handleToggle = () => {
         settoggle(!toggle)
+    }
+    const handleClientsToggleButton = () => {
+        setClientsToggle(!clientsToggle)
+        clientsToggleButton(clientsToggle)
     }
     const router = useRouter();
     return (
@@ -37,14 +45,14 @@ function Sidebar() {
                         </Link>
                     </li>
                     <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-200 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4" >
-                        <div className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
+                        <div onClick={handleClientsToggleButton} className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
                             <HiUserGroup/>
                         </div>
-                        <Link href="/landing">
+                        <div  >
                             <a href="#nabil" className={toggle ? 'hidden' : ''}  > 
                                 Clients
                             </a>
-                        </Link>
+                        </div>
                     </li>
                     <li className="flex px-4 gap-4 items-center p-1 hover:-translate-y-1 rounded-lg ansition p ease-in-out delay-150 border-2 border-slate-200 hover:border-2 hover:shadow-lg hover:text-white hover:bg-blue-700 duration-300 grow-0 py-4">
                         <div className={toggle ? 'grow-0 text-2xl' : 'grow-0 text-xl '}>
