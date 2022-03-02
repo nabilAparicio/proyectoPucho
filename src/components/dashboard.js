@@ -13,18 +13,16 @@ function Dashboard() {
     const {addUserData, state} = useContext(AppContext);
 
     const showClients = state.clientsToggleButton
-  useEffect(() => {
-    const usr = async ()=>{
-        const response = await getUser(token);
-        const data = response;
-        console.log(data)
-        if (data.id) {
-            addUserData(data)
-            console.log(state)
+    useEffect(() => {
+        const usr = async ()=>{
+            const response = await getUser(token);
+            const data = response;
+            if (data.id) {
+                addUserData(data)
+            }
         }
-    }
-    usr()
-  },[]);
+        usr()
+    },[]);
 
     return (    
     <>

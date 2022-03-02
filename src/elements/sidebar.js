@@ -3,19 +3,29 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { HiMenu, HiTemplate, HiUserGroup, HiFolderOpen, HiCode } from "react-icons/hi";
 import AppContext from "../context/AppContext";
+import { useAuth} from "../../hooks"
+import { getClients } from "../network/ApiAxios";
 
 function Sidebar() {
     
-    const {clientsToggleButton} = useContext(AppContext);
+    const {token} = useAuth ("")
+    const {clientsToggleButton, addUserClients,state} = useContext(AppContext);
     const [clientsToggle, setClientsToggle] = useState(false)
 
     const [toggle, settoggle] = useState(true);
     const handleToggle = () => {
         settoggle(!toggle)
     }
-    const handleClientsToggleButton = () => {
-        setClientsToggle(!clientsToggle)
-        clientsToggleButton(clientsToggle)
+    const handleClientsToggleButton = async () => {
+        const response = await getClients(token);
+        const Data = await response;
+        console.log(Data)
+        if (Data.data){
+            await addUserClients(Data.data)
+            await clientsToggleButton(clientsToggle)
+            setClientsToggle(!clientsToggle)
+            console.log(state.clientsToggleButton)
+        }
     }
     const router = useRouter();
     return (

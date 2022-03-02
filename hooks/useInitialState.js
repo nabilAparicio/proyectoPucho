@@ -2,7 +2,8 @@ import { useState } from "react";
 
 const initialState = { 
     user:[],
-    clientsToggleButton: false
+    userClients:[],
+    clientsToggleButton: false,
 }
 
 const useInitialState = () => {
@@ -12,6 +13,12 @@ const useInitialState = () => {
         setState({
             ...state,
             user:[payload]
+        })
+    }
+    const addUserClients = (payload) => {
+        setState({
+            ...state,
+            userClients:[payload]
         })
     }
     const clientsToggleButton = (payload) => {
@@ -24,7 +31,8 @@ const useInitialState = () => {
     return {
         state,
         addUserData,
-        clientsToggleButton
+        addUserClients,
+        clientsToggleButton,
     }
 }
 

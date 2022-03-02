@@ -27,3 +27,12 @@ export const getUser = async (token) => (
         return e.response
     })
 );
+export const getClients = async (token) => (
+    await instance.get('/clients', {headers: { Authorization: `Bearer ${token}` }})
+    .then((res) => {
+        return res.data
+    })
+    .catch((e) => {
+        return e.response
+    })
+);

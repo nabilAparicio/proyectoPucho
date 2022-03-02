@@ -1,10 +1,26 @@
-import React, {useState} from "react";
+import React, {useState, useEffect,useContext} from "react";
 import { login } from "../network/ApiAxios";
 import { useAuth } from "../../hooks";
 
 export default function Login({children}) {
     const {token, setToken} = useAuth ("")
-    const isloggedIn = token;
+    const [isloggedIn, setIsLoggedIn] = useState(false)
+    useEffect(() => {
+        const usr = ()=>{
+            if (sessionStorage._token) {
+                setIsLoggedIn(true)
+            } else {
+                setIsLoggedIn(false) 
+            }
+        }
+        usr()
+    },[]);
+
+    // if (typeof window !== 'undefined') {
+    //     if (sessionStorage.getItem("_token")) {
+    //         setIsLoggedIn(true)
+    //     }
+    // }
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
@@ -13,7 +29,9 @@ export default function Login({children}) {
         const response = await login(email, password);
         const data = response;
         if (data.token) {
+            sessionStorage.setItem("_token", true);
             setToken(data.token)
+            setIsLoggedIn(true)
         } else {
             setError(data.statusText)
         }
