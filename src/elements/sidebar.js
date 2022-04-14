@@ -10,21 +10,24 @@ function Sidebar() {
     
     const {token} = useAuth ("")
     const {clientsToggleButton, addUserClients,state} = useContext(AppContext);
-    const [clientsToggle, setClientsToggle] = useState(false)
+    const [clientsToggle, setClientsToggle] = useState(true)
+    
+    const idUser = () =>{
+        return state.user[0].id
+    }
 
     const [toggle, settoggle] = useState(true);
     const handleToggle = () => {
         settoggle(!toggle)
     }
     const handleClientsToggleButton = async () => {
-        const response = await getClients(token);
+        setClientsToggle(!clientsToggle)
+        clientsToggleButton(clientsToggle)
+        const response = await getClients(token, idUser());
         const Data = await response;
-        console.log(Data)
-        if (Data.data){
+        if (clientsToggleButton === true){
+            console.log("es true")
             await addUserClients(Data.data)
-            await clientsToggleButton(clientsToggle)
-            setClientsToggle(!clientsToggle)
-            console.log(state.clientsToggleButton)
         }
     }
     const router = useRouter();

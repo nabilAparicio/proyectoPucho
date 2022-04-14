@@ -29,8 +29,9 @@ function Dashboard() {
         <div className=" p-2 bg-gradient-to-r from-cyan-500 to-blue-500 h-screen  grid gap-1 grid-cols-12 grid-rows-6 ">
             <Navbar></Navbar>
             <Sidebar></Sidebar>
-            {showClients && <Clients/>}
-
+            <div className="row-start-2 col-start-3 col-span-5">
+                {showClients && <Clients/>}
+            </div>
         </div>
       
     </>

@@ -9,6 +9,7 @@ export default function Login({children}) {
         const usr = ()=>{
             if (sessionStorage._token) {
                 setIsLoggedIn(true)
+                setToken(sessionStorage._token)
             } else {
                 setIsLoggedIn(false) 
             }
@@ -29,7 +30,7 @@ export default function Login({children}) {
         const response = await login(email, password);
         const data = response;
         if (data.token) {
-            sessionStorage.setItem("_token", true);
+            sessionStorage.setItem("_token", data.token);
             setToken(data.token)
             setIsLoggedIn(true)
         } else {
